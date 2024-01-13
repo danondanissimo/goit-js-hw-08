@@ -28,7 +28,7 @@
 }
 
 .gallery-image:hover {
-  cursor: url(./images/bxs_hand-down.svg), pointer;
+  cursor: url(/images/bxs_hand-down.svg), pointer;
 }
 
 .modal {
@@ -45,7 +45,7 @@
 }
 
 .modal-image:hover {
-  cursor: url(./images/bxs_hand-down.svg), pointer;
+  cursor: url(/images/bxs_hand-down.svg), pointer;
 }
 
 .basicLightbox {
