@@ -44,6 +44,10 @@
   height: 640px;
 }
 
+.modal-image:hover {
+  cursor: url(/images/bxs_hand-down.svg), pointer;
+}
+
 .basicLightbox {
   background: rgba(46, 47, 66, 0.8);
 }
