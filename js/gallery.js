@@ -68,13 +68,13 @@ const imgGallery = document.querySelector(".gallery");
 
 const markup = images
   .map(
-    (image) => `<li class="gallery-item">
-  <a class="gallery-link" href="${image.original}">
+    ({ preview, original, description }) => `<li class="gallery-item">
+  <a class="gallery-link" href="${original}">
     <img
       class="gallery-image"
-      src="${image.preview}"
-      data-source="${image.original}"
-      alt="${image.description}"
+      src="${preview}"
+      data-source="${original}"
+      alt="${description}"
     />
   </a>
 </li>`
@@ -83,4 +83,33 @@ const markup = images
 
 imgGallery.insertAdjacentHTML("beforeend", markup);
 
-console.log(imgGallery);
+imgGallery.addEventListener("click", (event) => {
+  event.preventDefault();
+  if (event.target.nodeName !== "IMG") {
+    return;
+  }
+
+  const instance = basicLightbox.create(
+    `
+    <div class="modal">
+<img class="modal-image" src="${event.target.dataset.source}" alt="${event.target.alt}"/>
+    </div>
+`,
+    {
+      onShow: (instance) => {
+        document.addEventListener("keydown", closeModal);
+      },
+      onClose: (instance) => {
+        document.addEventListener("keydown", closeModal);
+      },
+    }
+  );
+
+  function closeModal(event) {
+    if (event.code === "Escape") {
+      instance.close();
+    }
+  }
+
+  instance.show();
+});
