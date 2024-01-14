@@ -100,7 +100,7 @@ imgGallery.addEventListener("click", (event) => {
         document.addEventListener("keydown", closeModal);
       },
       onClose: (instance) => {
-        document.addEventListener("keydown", closeModal);
+        document.removeEventListener("keydown", closeModal);
       },
     }
   );
